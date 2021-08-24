@@ -66,3 +66,20 @@ body{
 h3{
     text-align: center;
 }
+
+#ingredients{
+    display: 'none';
+    margin-top: 20px;
+    margin-left: 30%;
+}
+#thumbnail{
+    width: 588px;
+    height: 322px;
+    left: 426px;
+    top: 139px;
+    border-radius: 10px;
+    align-content: center;
+}
+#ingredients-list{
+    list-style: url(images/checkmark.png);
+}
