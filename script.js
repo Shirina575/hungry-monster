@@ -5,6 +5,8 @@ const findMeal = () => {
     let input = document.getElementById('input').value;
     const api = `https://www.themealdb.com/api/json/v1/1/search.php?s=${input}`;
     if(input === ''){
+        mealIngredients.style.display = 'none';
+        meals.style.display = 'none';
         errorMessage.innerHTML = `<h3>You didn't search anything!!!`;
     }else{
         fetch(api)
@@ -15,11 +17,11 @@ const findMeal = () => {
 
 }
 const showMeal = input => {
+    errorMessage.style.display = 'none';
+    mealIngredients.style.display = 'none';
     if(input === null){
-        errorMessage.style.display = 'none';
         meals.innerHTML = `<h3>No Meal Found!!!`;
     }else{
-        errorMessage.style.display = 'none';
         meals.innerHTML = ``;
         input.forEach(meal => {
             const mealId = meal.idMeal;
@@ -42,7 +44,6 @@ const ingredients = id =>{
 }
 
 const showIngredients = ingredient => {
-    meals.style.display = 'none';
     mealIngredients.style.display = 'block';
     mealIngredients.innerHTML = `
         <img id="thumbnail" src="${ingredient[0].strMealThumb}" alt="">
@@ -54,6 +55,7 @@ const showIngredients = ingredient => {
             const mealIngredientsList = ingredient[0][`strIngredient${i}`];
             const ingredientsMeasurement = ingredient[0][`strMeasure${i}`];
             const li = document.createElement('li');
+            li.innerHTML = ``;
             li.innerHTML = `${ingredientsMeasurement} ${mealIngredientsList}`;
             const ul = document.getElementById('ingredients-list');
             if(mealIngredientsList){
